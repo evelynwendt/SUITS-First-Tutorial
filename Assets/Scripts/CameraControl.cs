@@ -58,6 +58,19 @@ public class CameraControl : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Left click
         {
             // Add stuff here
+            Ray myRay;      // initializing the ray
+            RaycastHit hit; // initializing the raycasthit
+            public GameObject objectToinstantiate;
+            void Update ()
+            {
+                myRay = Camera.main.ScreenPointToRay (Input.mousePosition); // telling my ray variable that the ray will go from the center of 
+                if (Physics.Raycast (myRay, out hit)) { // here I ask : if myRay hits something, store all the info you can find in the raycasthit varible.
+                if (Input.GetMouseButtonDown (0)) {// what to do if i press the left mouse button
+             Instantiate (objectToinstantiate, hit.point, Quaternion.identity);// instatiate a prefab on the position where the ray hits the floor.
+             Debug.Log (hit.point);// debugs the vector3 of the position where I clicked
+         }// end upMousebutton
+     }// end physics.raycast    
+ }// end Update method
         }
     }
 }
